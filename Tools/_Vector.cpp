@@ -21,17 +21,17 @@ _Vector::Vector2D::Vector2D(double x,double y,double w)
 }
 
 
-double _Vector::Vector2D::GetX() const
+double& _Vector::Vector2D::GetX() 
 {
 	return x;
 }
 
-double _Vector::Vector2D::GetY() const
+double& _Vector::Vector2D::GetY()
 {
 	return y;
 }
 
-double _Vector::Vector2D::GetW() const
+double& _Vector::Vector2D::GetW()
 {
 	return w;
 }
@@ -52,7 +52,27 @@ void _Vector::Vector2D::SetW(double w)
 	this->w = w;
 }
 
-double _Vector::Vector2D::operator[](int index)
+const double& _Vector::Vector2D::operator[](int index) const
+{
+	if (index >= 0 && index <= 2)
+	{
+		switch (index)
+		{
+		case 0:
+			return x;
+		case 1:
+			return y;
+		case 2:
+			return w;
+		}
+	}
+	else
+	{
+		throw std::out_of_range("Index out of range");
+	}
+}
+
+double& _Vector::Vector2D::operator[](int index)
 {
 	if (index >= 0 && index <= 2)
 	{
@@ -69,7 +89,6 @@ double _Vector::Vector2D::operator[](int index)
 	else
 	{
 		throw std::out_of_range("Index out of range");
-		return -1;
 	}
 }
 
@@ -102,9 +121,11 @@ _Vector::Vector3D::Vector3D()
 }
 
 _Vector::Vector3D::Vector3D(const Vector3D& v)
-	:x(v.x), y(v.y), z(v.z), w(v.w)
 {
-
+	this->x = v.x;
+	this->y = v.y;
+	this->z = v.z;
+	this->w = v.w;
 }
 
 _Vector::Vector3D::Vector3D(double x, double y, double z, double w)
@@ -155,7 +176,29 @@ void _Vector::Vector3D::SetZ(double z)
 //	this->w = w;
 //}
 
-double _Vector::Vector3D::operator[](int index)
+const double& _Vector::Vector3D::operator[](int index) const
+{
+	if (index >= 0 && index <= 3)
+	{
+		switch (index)
+		{
+		case 0:
+			return x;
+		case 1:
+			return y;
+		case 2:
+			return z;
+		case 3:
+			return w;
+		}
+	}
+	else
+	{
+		throw std::out_of_range("Index out of range");
+	}
+}
+
+double& _Vector::Vector3D::operator[](int index)
 {
 	if (index >= 0 && index <= 3)
 	{
@@ -174,13 +217,12 @@ double _Vector::Vector3D::operator[](int index)
 	else
 	{
 		throw std::out_of_range("Index out of range");
-		return -1;
 	}
 }
 
 _Vector::Vector3D _Vector::Vector3D::operator*(const _Vector::Vector3D& v) const
 {
-	return Vector3D(x * v.x, y * v.y, z * v.z, w * v.w);
+	return Vector3D(x * v.x, y * v.y, z * v.z,w * v.w);
 }
 
 _Vector::Vector3D _Vector::Vector3D::operator+(const _Vector::Vector3D& v) const
