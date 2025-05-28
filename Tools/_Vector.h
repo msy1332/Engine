@@ -14,9 +14,9 @@ namespace _Vector // 定义了一个命名空间，用于组织代码，避免命名冲突
 			Vector2D(const Vector2D& v); //拷贝构造函数，用其他对象来进行向量初始化
 			Vector2D(double x, double y, double w); // 有参构造函数，用于初始化向量
 
-			double& GetX(); // 获取x分量
-			double& GetY(); // 获取y分量
-			double& GetW(); // 获取w分量
+			double GetX(); // 获取x分量
+			double GetY(); // 获取y分量
+			double GetW(); // 获取w分量
 
 			void SetX(double x); // 设置x分量
 			void SetY(double y); // 设置y分量

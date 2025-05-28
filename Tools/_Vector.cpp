@@ -21,17 +21,17 @@ _Vector::Vector2D::Vector2D(double x,double y,double w)
 }
 
 
-double& _Vector::Vector2D::GetX() 
+double _Vector::Vector2D::GetX() 
 {
 	return x;
 }
 
-double& _Vector::Vector2D::GetY()
+double _Vector::Vector2D::GetY()
 {
 	return y;
 }
 
-double& _Vector::Vector2D::GetW()
+double _Vector::Vector2D::GetW()
 {
 	return w;
 }
@@ -58,12 +58,12 @@ const double& _Vector::Vector2D::operator[](int index) const
 	{
 		switch (index)
 		{
-		case 0:
-			return x;
-		case 1:
-			return y;
-		case 2:
-			return w;
+			case 0:
+				return x;
+			case 1:
+				return y;
+			case 2:
+				return w;
 		}
 	}
 	else
@@ -182,14 +182,14 @@ const double& _Vector::Vector3D::operator[](int index) const
 	{
 		switch (index)
 		{
-		case 0:
-			return x;
-		case 1:
-			return y;
-		case 2:
-			return z;
-		case 3:
-			return w;
+			case 0:
+				return x;
+			case 1:
+				return y;
+			case 2:
+				return z;
+			case 3:
+				return w;
 		}
 	}
 	else
