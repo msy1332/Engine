@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Draw_Cube">
+      <UniqueIdentifier>{68b745b4-da4c-49ae-ad3f-47d5e5cc1d35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Draw_Cube\工具">
+      <UniqueIdentifier>{7dceb50e-a6d2-42b4-9888-59fe0c67456c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Draw_Cube\工具\头文件">
+      <UniqueIdentifier>{5c76d7a0-b69b-4b15-9c29-55ecbfa98699}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Draw_Cube\工具\源文件">
+      <UniqueIdentifier>{f693a048-7c01-497b-8bbf-8bbf0e49ead5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Tools\_Matrix.cpp">
+      <Filter>Draw_Cube\工具\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Tools\_Vector.cpp">
+      <Filter>Draw_Cube\工具\源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawCubeMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Tools\_Matrix.h">
+      <Filter>Draw_Cube\工具\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Tools\_Vector.h">
+      <Filter>Draw_Cube\工具\头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
