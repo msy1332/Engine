@@ -1,9 +1,13 @@
+#include <stdexcept>
+#include <iostream>
 #pragma once // 防止头文件重复包含而导致的重定义问题
 
 namespace _Vector // 定义了一个命名空间，用于组织代码，避免命名冲突
 {
-	class Vector2D // 定义一个二维向量类
+	namespace Vector_2D // 定义了一个2D向量命名空间，用于组织代码，避免命名冲突
 	{
+		class Vector2D // 定义一个二维向量类
+		{
 		protected:
 		private:
 			double x; //x向量分量
@@ -28,9 +32,12 @@ namespace _Vector // 定义了一个命名空间，用于组织代码，避免命名冲突
 			Vector2D operator+(const Vector2D& v) const; // 重载加法运算符，用于计算向量的加法
 			Vector2D operator-(const Vector2D& v) const; // 重载减法运算符，用于计算向量的减法
 			void operator=(const Vector2D& v); // 重载复值运算符，用于向量拷贝
-	};
-	class Vector3D : public Vector2D // 定义一个三维向量类
+		};
+	}
+	namespace Vector_3D // 定义了一个3D向量命名空间，用于组织代码，避免命名冲突
 	{
+		class Vector3D : public Vector_2D::Vector2D // 定义一个三维向量类
+		{
 		protected:
 		private:
 			double x; // x向量分量
@@ -51,12 +58,13 @@ namespace _Vector // 定义了一个命名空间，用于组织代码，避免命名冲突
 			//void SetY(double y); // 设置y的向量分量
 			void SetZ(double z); // 设置z的向量分量
 			//void SetW(double w);// 设置w的向量分量
-			
+
 			const double& operator[](int index) const override;// 重载了下标运算符，使得对象可以通过像数组一样用下标来访问向量的分量
 			double& operator[](int index) override;// 重载了下标运算符，使得对象可以通过像数组一样用下标来访问向量的分量
 			Vector3D operator*(const Vector3D& v) const; // 重载乘法运算符，用于计算向量点乘
 			Vector3D operator+(const Vector3D& v) const; // 重载加法运算符，用于计算向量加法
 			Vector3D operator-(const Vector3D& v) const; // 重载减法运算符，用于计算向量减法
 			void operator=(const Vector3D& v); // 重载复值运算符，用于向量的拷贝
-	};
+		};
+	}
 }

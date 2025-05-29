@@ -1,22 +1,29 @@
 #include "../Tools/_Matrix.h"
-#include <stdexcept>
-#include <iostream>
+using namespace _Matrix::Matrix_2D;
 
-_Matrix::Matrix2D::Matrix2D()
+Matrix2D::Matrix2D()
 {
-	_Matrix2D[0] = { 0,0,0 };
-	_Matrix2D[1] = { 0,0,0 };
-	_Matrix2D[2] = { 0,0,0 };
+	_Matrix2D[0] = { 1,0,0 };
+	_Matrix2D[1] = { 0,1,0 };
+	_Matrix2D[2] = { 0,0,1 };
 }
 
-_Matrix::Matrix2D::Matrix2D(_Vector::Vector2D v1, _Vector::Vector2D v2, _Vector::Vector2D v3)
+
+Matrix2D::Matrix2D()
+{
+	_Matrix2D[0] = { 1,0,0 };
+	_Matrix2D[1] = { 0,1,0 };
+	_Matrix2D[2] = { 0,0,1 };
+}
+
+Matrix2D::Matrix2D(Vector2D v1, Vector2D v2, Vector2D v3)
 {
 	_Matrix2D[0] = v1;
 	_Matrix2D[1] = v2;
 	_Matrix2D[2] = v3;
 }
 
-_Vector::Vector2D& _Matrix::Matrix2D::operator[](int index)
+Vector2D& Matrix2D::operator[](int index)
 {
 	if (index >= 0 && index <= 2)
 	{
@@ -28,7 +35,7 @@ _Vector::Vector2D& _Matrix::Matrix2D::operator[](int index)
 	}
 }
 
-const _Vector::Vector2D& _Matrix::Matrix2D::operator[](int index) const
+const Vector2D& Matrix2D::operator[](int index) const
 {
 	if (index >= 0 && index <= 2)
 	{
@@ -40,7 +47,7 @@ const _Vector::Vector2D& _Matrix::Matrix2D::operator[](int index) const
 	}
 }
 
-_Matrix::Matrix2D _Matrix::Matrix2D::operator*(const Matrix2D& v) const
+Matrix2D Matrix2D::operator*(const Matrix2D& v) const
 {
 	Matrix2D v1;
 	for (int i = 0; i < 3; i++)
@@ -56,9 +63,9 @@ _Matrix::Matrix2D _Matrix::Matrix2D::operator*(const Matrix2D& v) const
 	return v1;
 }
 
-_Vector::Vector2D _Matrix::Matrix2D::operator*(const _Vector::Vector2D& v) const
+Vector2D Matrix2D::operator*(const Vector2D& v) const
 {
-	_Vector::Vector2D v1;
+	Vector2D v1;
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
@@ -69,7 +76,7 @@ _Vector::Vector2D _Matrix::Matrix2D::operator*(const _Vector::Vector2D& v) const
 	return v1;
 }
 
-_Matrix::Matrix2D _Matrix::Matrix2D::operator+(const Matrix2D& v) const
+Matrix2D Matrix2D::operator+(const Matrix2D& v) const
 {
 	Matrix2D v1;
 	for (int i = 0; i < 3; i++)
@@ -82,7 +89,7 @@ _Matrix::Matrix2D _Matrix::Matrix2D::operator+(const Matrix2D& v) const
 	return v1;
 }
 
-_Matrix::Matrix2D _Matrix::Matrix2D::operator-(const Matrix2D& v) const
+Matrix2D Matrix2D::operator-(const Matrix2D& v) const
 {
 	Matrix2D v1;
 	for (int i = 0; i < 3; i++)
@@ -95,7 +102,7 @@ _Matrix::Matrix2D _Matrix::Matrix2D::operator-(const Matrix2D& v) const
 	return v1;
 }
 
-void _Matrix::Matrix2D::operator=(const Matrix2D& v)
+void Matrix2D::operator=(const Matrix2D& v)
 {
 	for (int i = 0; i < 3; i++)
 	{
@@ -104,4 +111,49 @@ void _Matrix::Matrix2D::operator=(const Matrix2D& v)
 			_Matrix2D[i][j] = v[i][j];
 		}
 	}
+}
+
+Matrix2D_Scaling::Matrix2D_Scaling()
+	: Matrix2D()
+{
+
+}
+
+Matrix2D_Scaling::Matrix2D_Scaling(int Sx, int Sy)
+{
+	Matrix2D(
+		Vector2D(Sx, 0, 0),
+		Vector2D(0, Sy, 0),
+		Vector2D(0, 0, 1)
+	);
+}
+
+Matrix2D_Translation::Matrix2D_Translation()
+	: Matrix2D()
+{
+
+}
+
+Matrix2D_Translation::Matrix2D_Translation(int Tx, int Ty)
+{
+	Matrix2D(
+		Vector2D(1, 0, Tx),
+		Vector2D(0, 1, Ty),
+		Vector2D(0, 0, 1)
+	);
+}
+
+Matrix2D_Rotation::Matrix2D_Rotation()
+	: Matrix2D()
+{
+
+}
+
+Matrix2D_Rotation::Matrix2D_Rotation(int  R)
+{
+	Matrix2D(
+		Vector2D(cos(R), -1 * sin(R), 0),
+		Vector2D(sin(R),    cos(R),   0),
+		Vector2D(  0,       0,        1)
+	);
 }
