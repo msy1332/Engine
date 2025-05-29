@@ -1,22 +1,14 @@
 #include "../Tools/_Matrix.h"
 using namespace _Matrix::Matrix_2D;
 
-Matrix2D::Matrix2D()
+_Matrix::Matrix_2D::Matrix2D::Matrix2D()
 {
 	_Matrix2D[0] = { 1,0,0 };
 	_Matrix2D[1] = { 0,1,0 };
 	_Matrix2D[2] = { 0,0,1 };
 }
 
-
-Matrix2D::Matrix2D()
-{
-	_Matrix2D[0] = { 1,0,0 };
-	_Matrix2D[1] = { 0,1,0 };
-	_Matrix2D[2] = { 0,0,1 };
-}
-
-Matrix2D::Matrix2D(Vector2D v1, Vector2D v2, Vector2D v3)
+_Matrix::Matrix_2D::Matrix2D::Matrix2D(const Vector2D& v1, const Vector2D& v2, const Vector2D& v3)
 {
 	_Matrix2D[0] = v1;
 	_Matrix2D[1] = v2;
@@ -33,6 +25,20 @@ Vector2D& Matrix2D::operator[](int index)
 	{
 		throw std::out_of_range("Index out of range");
 	}
+}
+
+void Matrix2D::Set_Matrix2D(const Vector2D& v1, const Vector2D& v2, const Vector2D& v3)
+{
+	_Matrix2D[0] = v1;
+	_Matrix2D[1] = v2;
+	_Matrix2D[2] = v3;
+}
+
+void Matrix2D::Clear_Matrix()
+{
+	_Matrix2D[0] = { 1,0,0 };
+	_Matrix2D[1] = { 0,1,0 };
+	_Matrix2D[2] = { 0,0,1 };
 }
 
 const Vector2D& Matrix2D::operator[](int index) const
@@ -54,6 +60,7 @@ Matrix2D Matrix2D::operator*(const Matrix2D& v) const
 	{
 		for(int j = 0;j < 3;j++)
 		{
+			v1[i][j] = 0;
 			for (int k = 0; k < 3; k++)
 			{
 				v1[i][j] += _Matrix2D[i][k] * v._Matrix2D[k][j];
@@ -113,47 +120,77 @@ void Matrix2D::operator=(const Matrix2D& v)
 	}
 }
 
-Matrix2D_Scaling::Matrix2D_Scaling()
+_Matrix::Matrix_2D::Matrix2D_Scaling::Matrix2D_Scaling()
 	: Matrix2D()
 {
 
 }
 
-Matrix2D_Scaling::Matrix2D_Scaling(int Sx, int Sy)
+_Matrix::Matrix_2D::Matrix2D_Scaling::Matrix2D_Scaling(double Sx, double Sy)
+	: Matrix2D(
+		Vector2D(Sx, 0, 0),
+		Vector2D(0, Sy, 0),
+		Vector2D(0, 0, 1)
+	)
 {
-	Matrix2D(
+
+}
+
+void Matrix2D_Scaling::SetS(double Sx, double Sy)
+{
+	Set_Matrix2D(
 		Vector2D(Sx, 0, 0),
 		Vector2D(0, Sy, 0),
 		Vector2D(0, 0, 1)
 	);
 }
 
-Matrix2D_Translation::Matrix2D_Translation()
+_Matrix::Matrix_2D::Matrix2D_Translation::Matrix2D_Translation()
 	: Matrix2D()
 {
 
 }
 
-Matrix2D_Translation::Matrix2D_Translation(int Tx, int Ty)
+_Matrix::Matrix_2D::Matrix2D_Translation::Matrix2D_Translation(double Tx, double Ty)
+	: Matrix2D(
+		Vector2D(1, 0, Tx),
+		Vector2D(0, 1, Ty),
+		Vector2D(0, 0, 1)
+	)
 {
-	Matrix2D(
+
+}
+
+void Matrix2D_Translation::SetT(double Tx, double Ty)
+{
+	Set_Matrix2D(
 		Vector2D(1, 0, Tx),
 		Vector2D(0, 1, Ty),
 		Vector2D(0, 0, 1)
 	);
 }
 
-Matrix2D_Rotation::Matrix2D_Rotation()
+_Matrix::Matrix_2D::Matrix2D_Rotation::Matrix2D_Rotation()
 	: Matrix2D()
 {
 
 }
 
-Matrix2D_Rotation::Matrix2D_Rotation(int  R)
-{
-	Matrix2D(
+_Matrix::Matrix_2D::Matrix2D_Rotation::Matrix2D_Rotation(double  R)
+	: Matrix2D(
 		Vector2D(cos(R), -1 * sin(R), 0),
-		Vector2D(sin(R),    cos(R),   0),
-		Vector2D(  0,       0,        1)
+		Vector2D(sin(R), cos(R), 0),
+		Vector2D(0, 0, 1)
+	)
+{
+
+}
+
+void Matrix2D_Rotation::SetR(double R)
+{
+	Set_Matrix2D(
+		Vector2D(cos(R), -1 * sin(R), 0),
+		Vector2D(sin(R), cos(R), 0),
+		Vector2D(0, 0, 1)
 	);
 }
