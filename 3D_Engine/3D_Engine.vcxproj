@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Tools\_Matrix.cpp" />
+    <ClCompile Include="..\Tools\_Model.cpp" />
     <ClCompile Include="..\Tools\_Vector.cpp" />
     <ClCompile Include="DrawCubeMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Tools\_Matrix.h" />
+    <ClInclude Include="..\Tools\_Model.h" />
     <ClInclude Include="..\Tools\_Vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

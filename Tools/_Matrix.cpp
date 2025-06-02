@@ -53,6 +53,24 @@ const Vector2D& Matrix2D::operator[](int index) const
 	}
 }
 
+std::vector<Vector2D> Matrix2D::Model_To_World(const Model2D& model)
+{
+	double X = model.GetModelX();
+	double Y = model.GetModelY();
+	double R = model.GetModelR();
+	std::vector<Vector2D> Vertex_World;
+	std::vector<Vector2D> Mocdel_Vertex = Model2D(model).Get_Vertex();
+	for (int i = 0;i < Mocdel_Vertex.size();i++)
+	{
+		Vector2D v(Mocdel_Vertex[i][0], Mocdel_Vertex[i][1], 1);
+		v = Matrix2D_Rotation(R) * v;
+		v[0] = v[0] + X;
+		v[1] = v[1] + Y;
+		Vertex_World.push_back(v);
+	}
+	return Vertex_World;
+}
+
 Matrix2D Matrix2D::operator*(const Matrix2D& v) const
 {
 	Matrix2D v1;

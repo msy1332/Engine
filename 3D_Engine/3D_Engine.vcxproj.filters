@@ -36,12 +36,18 @@
     <ClCompile Include="DrawCubeMain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\Tools\_Model.cpp">
+      <Filter>Draw_Cube\工具\源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Tools\_Matrix.h">
       <Filter>Draw_Cube\工具\头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\Tools\_Vector.h">
+      <Filter>Draw_Cube\工具\头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Tools\_Model.h">
       <Filter>Draw_Cube\工具\头文件</Filter>
     </ClInclude>
   </ItemGroup>
